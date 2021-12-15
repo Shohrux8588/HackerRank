@@ -2015,3 +2015,32 @@ var decrypt = function(code, k) {
 };
 
 
+function utopianTree(n) {
+    let height = 1;
+    for (let i = 1; i <= 5; i++) {
+        if (i % 2 === 0) {
+            height++;
+        } else {
+            height *= 2;
+        }
+    }
+    console.log(height);
+}
+
+function getMoneySpent(keyboards, drives, b) {
+
+    let pairs = [];
+    keyboards = keyboards.sort((a, b) => a - b);
+    drives = drives.sort((a, b) => a - b);
+    for (let i = 0; i < keyboards.length; i++) {
+        for (let j = 0; j < drives.length; j++) {
+            if (keyboards[i] + drives[j] <= b) {
+                pairs.push(keyboards[i] + drives[j]);
+            } else {
+                break;
+            }
+        }
+    }
+    const result = pairs.length === 0 ? -1 : Math.max(...pairs);
+    return result;
+}
